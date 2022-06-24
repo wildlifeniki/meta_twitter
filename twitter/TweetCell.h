@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *tweetContentLabel;
 @property (strong, nonatomic) IBOutlet UILabel *authorScreennameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *repliesLabel;
+@property (strong, nonatomic) IBOutlet UILabel *retweetsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *favoritesLabel;
 
 @end
 

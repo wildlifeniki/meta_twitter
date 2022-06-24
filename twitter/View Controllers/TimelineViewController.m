@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -37,6 +38,16 @@
     
     self.tableView.dataSource = self;
     
+    [self getTimeline];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getTimeline) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    [self.tableView addSubview:self.refreshControl];
+
+}
+
+-(void)getTimeline {
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -45,14 +56,14 @@
                 NSString *text = tweet.text;
                 NSLog(@"%@", text);
             }
-            self.arrayOfTweets = [NSMutableArray arrayWithObjects:tweets, nil];
+            self.arrayOfTweets = [NSMutableArray arrayWithArray:tweets];
             [self.tableView reloadData];
             
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
-    }];
-}
+        [self.refreshControl endRefreshing];
+    }];}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -68,10 +79,15 @@
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
     cell.authorLabel.text = tweet.user.name;
     cell.authorScreennameLabel.text = tweet.user.screenName;
+    cell.dateLabel.text = tweet.createdAtString;
+    cell.tweetContentLabel.text = tweet.text;
     NSString *URLString = tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    //NSData *urlData = [NSData dataWithContentsOfURL:url];
     [cell.profileImageView setImageWithURL:url];
+    cell.retweetsLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+    cell.repliesLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount]; //have to change to get num replies
+    cell.favoritesLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
     return cell;
 }
 
