@@ -10,6 +10,7 @@
 #import "Tweet.h"
 #import "APIManager.h"
 #import "UIImageView+AFNetworking.h"
+#import "DateTools.h"
 
 @implementation TweetCell
 
@@ -23,6 +24,7 @@
 
     // Configure the view for the selected state
 }
+
 
 -(void)setTweetObject:(Tweet *)tweet {
     self.authorLabel.text = self.tweet.user.name;
