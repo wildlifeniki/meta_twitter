@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TweetCell : UITableViewCell
-@property (strong, nonatomic) UITableViewCell *tweet;
+@property (strong, nonatomic) Tweet *tweet;
 @property (strong, nonatomic) IBOutlet UILabel *authorLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (strong, nonatomic) IBOutlet UILabel *tweetContentLabel;
@@ -20,6 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *repliesLabel;
 @property (strong, nonatomic) IBOutlet UILabel *retweetsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *favoritesLabel;
+@property (weak, nonatomic) IBOutlet UIButton *repliesButton;
+@property (weak, nonatomic) IBOutlet UIButton *retweetsButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoritesButton;
+
+-(void)setTweetObject:(Tweet *)tweet;
 
 @end
 

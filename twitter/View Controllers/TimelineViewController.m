@@ -79,17 +79,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
-    cell.authorLabel.text = tweet.user.name;
-    cell.authorScreennameLabel.text = tweet.user.screenName;
-    cell.dateLabel.text = tweet.createdAtString;
-    cell.tweetContentLabel.text = tweet.text;
-    NSString *URLString = tweet.user.profilePicture;
-    NSURL *url = [NSURL URLWithString:URLString];
-    //NSData *urlData = [NSData dataWithContentsOfURL:url];
-    [cell.profileImageView setImageWithURL:url];
-    cell.retweetsLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
-    cell.repliesLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount]; //have to change to get num replies
-    cell.favoritesLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    cell.tweet = tweet;
+    [cell setTweetObject:tweet];
     return cell;
 }
 

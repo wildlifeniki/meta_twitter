@@ -131,11 +131,17 @@
                                                     <rect key="frame" x="158" y="41" width="58" height="44"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="retweet-icon" title=" "/>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="oQv-bc-U1l" eventType="touchUpInside" id="l85-qr-QAN"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqd-aI-7Lo">
                                                     <rect key="frame" x="255" y="41" width="58" height="44"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="favor-icon" title=" "/>
+                                                    <connections>
+                                                        <action selector="didTapFavorite:" destination="oQv-bc-U1l" eventType="touchUpInside" id="4Pb-b6-ekQ"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vph-H4-S5G">
                                                     <rect key="frame" x="356" y="41" width="58" height="44"/>
@@ -194,9 +200,12 @@
                                             <outlet property="authorLabel" destination="PME-YX-xT4" id="Ops-CU-IyC"/>
                                             <outlet property="authorScreennameLabel" destination="uMf-Wk-UE6" id="obd-3R-MaZ"/>
                                             <outlet property="dateLabel" destination="2F9-nR-Ft6" id="lmh-zc-4iv"/>
+                                            <outlet property="favoritesButton" destination="nqd-aI-7Lo" id="p4E-H3-ydP"/>
                                             <outlet property="favoritesLabel" destination="2S9-h2-EHI" id="hbH-bm-hEE"/>
                                             <outlet property="profileImageView" destination="urL-sc-08G" id="2Va-bj-0if"/>
+                                            <outlet property="repliesButton" destination="OaB-8q-Iy3" id="TdO-jy-hTG"/>
                                             <outlet property="repliesLabel" destination="fDF-zY-LHH" id="NYX-Gu-uta"/>
+                                            <outlet property="retweetsButton" destination="jOo-qy-YVu" id="LPv-6h-obR"/>
                                             <outlet property="retweetsLabel" destination="URe-il-bDm" id="uY4-I3-LGv"/>
                                             <outlet property="tweetContentLabel" destination="zgv-BF-p9D" id="9Qx-Ed-TdA"/>
                                         </connections>
