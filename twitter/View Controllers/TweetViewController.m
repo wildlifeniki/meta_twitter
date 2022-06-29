@@ -1,30 +1,27 @@
 //
-//  TweetCell.m
+//  TweetViewController.m
 //  twitter
 //
-//  Created by admin on 6/22/22.
+//  Created by Nikita Singh on 6/28/22.
 //  Copyright © 2022 Emerson Malca. All rights reserved.
 //
 
-#import "TweetCell.h"
-#import "Tweet.h"
-#import "APIManager.h"
+#import "TweetViewController.h"
 #import "UIImageView+AFNetworking.h"
-#import "DateTools.h"
+#import "APIManager.h"
 
-@implementation TweetCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+@interface TweetViewController ()
+
+@end
+
+@implementation TweetViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setTweetObject:self.tweet];
+    // Do any additional setup after loading the view.
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 
 -(void)setTweetObject:(Tweet *)tweet {
     self.authorLabel.text = self.tweet.user.name;
@@ -102,5 +99,14 @@
     }
 }
 
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end
